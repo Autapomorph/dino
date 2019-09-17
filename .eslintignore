@@ -1,0 +1,4 @@
+/dist/
+!.eslintrc.js
+!.prettierrc.js
+!.stylelintrc.js
