@@ -3,22 +3,24 @@ import Phaser from 'phaser';
 import { isProd } from '../utils';
 
 const config = {
-  title: 'Phaser 3 Project Template',
-  url: 'https://example.org',
+  title: 'Dino',
+  url: 'https://github.com/Autapomorph/dino',
   version: '1.0',
   type: Phaser.AUTO,
-  backgroundColor: '#000',
-  render: { pixelArt: false },
+  backgroundColor: '#fff',
   banner: !isProd,
+  render: {
+    antialias: false,
+  },
   scale: {
-    width: 800,
-    height: 600,
-    mode: Phaser.Scale.ScaleModes.FIT,
+    width: 1200,
+    height: 350,
+    mode: Phaser.Scale.ScaleModes.NONE,
   },
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: { y: 200, x: 0 },
+      gravity: { y: 0 },
       debug: !isProd,
     },
   },

@@ -1,8 +1,0 @@
-{
-  "assets": {
-    "button": { "type": "image", "source": "assets/ui/button.png" },
-    "buttonHover": { "type": "image", "source": "assets/ui/buttonHover.png" },
-    "checkbox": { "type": "image", "source": "assets/ui/checkbox.png" },
-    "checkboxChecked": { "type": "image", "source": "assets/ui/checkboxChecked.png" }
-  }
-}

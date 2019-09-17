@@ -46,18 +46,18 @@ module.exports = {
       template: './index.html',
     }),
     new FaviconsWebpackPlugin({
-      logo: './assets/sprites/logo.png',
+      logo: './assets/icons/dino-start-icon.png',
       prefix: 'favicons',
       favicons: {
-        appName: 'Phaser 3 Project Template',
+        appName: 'Dino',
         start_url: '/',
         display: 'fullscreen',
         background: '#fff',
         theme_color: '#fff',
         icons: {
           android: true,
-          appleIcon: true,
-          appleStartup: true,
+          appleIcon: { background: 'transparent' },
+          appleStartup: { background: 'transparent' },
           coast: false,
           favicons: true,
           firefox: false,

@@ -1,0 +1,650 @@
+{
+  "textures": [
+    {
+      "image": "dino-atlas.png",
+      "format": "RGBA8888",
+      "size": {
+        "w": 2402,
+        "h": 128
+      },
+      "scale": 1,
+      "frames": [
+        {
+          "filename": "ground",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 2400,
+            "h": 24
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 2400,
+            "h": 24
+          },
+          "frame": {
+            "x": 1,
+            "y": 1,
+            "w": 2400,
+            "h": 24
+          }
+        },
+        {
+          "filename": "cactus-large-3",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 150,
+            "h": 100
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 100
+          },
+          "frame": {
+            "x": 1,
+            "y": 27,
+            "w": 150,
+            "h": 100
+          }
+        },
+        {
+          "filename": "cactus-large-2",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 100,
+            "h": 100
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 100,
+            "h": 100
+          },
+          "frame": {
+            "x": 153,
+            "y": 27,
+            "w": 100,
+            "h": 100
+          }
+        },
+        {
+          "filename": "cactus-large-1",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 50,
+            "h": 100
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 50,
+            "h": 100
+          },
+          "frame": {
+            "x": 255,
+            "y": 27,
+            "w": 50,
+            "h": 100
+          }
+        },
+        {
+          "filename": "dino-dead-outline",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 88,
+            "h": 94
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 88,
+            "h": 94
+          },
+          "frame": {
+            "x": 307,
+            "y": 27,
+            "w": 88,
+            "h": 94
+          }
+        },
+        {
+          "filename": "dino-idle-1",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 88,
+            "h": 94
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 88,
+            "h": 94
+          },
+          "frame": {
+            "x": 397,
+            "y": 27,
+            "w": 88,
+            "h": 94
+          }
+        },
+        {
+          "filename": "dino-idle-2",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 88,
+            "h": 94
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 88,
+            "h": 94
+          },
+          "frame": {
+            "x": 487,
+            "y": 27,
+            "w": 88,
+            "h": 94
+          }
+        },
+        {
+          "filename": "dino-run-1",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 88,
+            "h": 94
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 88,
+            "h": 94
+          },
+          "frame": {
+            "x": 577,
+            "y": 27,
+            "w": 88,
+            "h": 94
+          }
+        },
+        {
+          "filename": "dino-run-2",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 88,
+            "h": 94
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 88,
+            "h": 94
+          },
+          "frame": {
+            "x": 667,
+            "y": 27,
+            "w": 88,
+            "h": 94
+          }
+        },
+        {
+          "filename": "dino-start",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 88,
+            "h": 90
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 88,
+            "h": 90
+          },
+          "frame": {
+            "x": 757,
+            "y": 27,
+            "w": 88,
+            "h": 90
+          }
+        },
+        {
+          "filename": "dino-dead",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 80,
+            "h": 86
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 80,
+            "h": 86
+          },
+          "frame": {
+            "x": 847,
+            "y": 27,
+            "w": 80,
+            "h": 86
+          }
+        },
+        {
+          "filename": "moon-1",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 80,
+            "h": 80
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 80,
+            "h": 80
+          },
+          "frame": {
+            "x": 929,
+            "y": 27,
+            "w": 80,
+            "h": 80
+          }
+        },
+        {
+          "filename": "star-1",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 18,
+            "h": 18
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 18,
+            "h": 18
+          },
+          "frame": {
+            "x": 929,
+            "y": 109,
+            "w": 18,
+            "h": 18
+          }
+        },
+        {
+          "filename": "star-2",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 18,
+            "h": 18
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 18,
+            "h": 18
+          },
+          "frame": {
+            "x": 949,
+            "y": 109,
+            "w": 18,
+            "h": 18
+          }
+        },
+        {
+          "filename": "star-3",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 18,
+            "h": 18
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 18,
+            "h": 18
+          },
+          "frame": {
+            "x": 969,
+            "y": 109,
+            "w": 18,
+            "h": 18
+          }
+        },
+        {
+          "filename": "moon-2",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 40,
+            "h": 80
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 40,
+            "h": 80
+          },
+          "frame": {
+            "x": 1011,
+            "y": 27,
+            "w": 40,
+            "h": 80
+          }
+        },
+        {
+          "filename": "moon-3",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 40,
+            "h": 80
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 40,
+            "h": 80
+          },
+          "frame": {
+            "x": 1053,
+            "y": 27,
+            "w": 40,
+            "h": 80
+          }
+        },
+        {
+          "filename": "moon-4",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 40,
+            "h": 80
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 40,
+            "h": 80
+          },
+          "frame": {
+            "x": 1095,
+            "y": 27,
+            "w": 40,
+            "h": 80
+          }
+        },
+        {
+          "filename": "moon-5",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 40,
+            "h": 80
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 40,
+            "h": 80
+          },
+          "frame": {
+            "x": 1137,
+            "y": 27,
+            "w": 40,
+            "h": 80
+          }
+        },
+        {
+          "filename": "moon-6",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 40,
+            "h": 80
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 40,
+            "h": 80
+          },
+          "frame": {
+            "x": 1179,
+            "y": 27,
+            "w": 40,
+            "h": 80
+          }
+        },
+        {
+          "filename": "moon-7",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 40,
+            "h": 80
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 40,
+            "h": 80
+          },
+          "frame": {
+            "x": 1221,
+            "y": 27,
+            "w": 40,
+            "h": 80
+          }
+        },
+        {
+          "filename": "cactus-small-3",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 102,
+            "h": 70
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 102,
+            "h": 70
+          },
+          "frame": {
+            "x": 1263,
+            "y": 27,
+            "w": 102,
+            "h": 70
+          }
+        },
+        {
+          "filename": "cloud",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 92,
+            "h": 27
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 92,
+            "h": 27
+          },
+          "frame": {
+            "x": 1263,
+            "y": 99,
+            "w": 92,
+            "h": 27
+          }
+        },
+        {
+          "filename": "cactus-small-2",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 68,
+            "h": 70
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 68,
+            "h": 70
+          },
+          "frame": {
+            "x": 1367,
+            "y": 27,
+            "w": 68,
+            "h": 70
+          }
+        },
+        {
+          "filename": "cactus-small-1",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 34,
+            "h": 70
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 34,
+            "h": 70
+          },
+          "frame": {
+            "x": 1437,
+            "y": 27,
+            "w": 34,
+            "h": 70
+          }
+        },
+        {
+          "filename": "bird-1",
+          "rotated": false,
+          "trimmed": true,
+          "sourceSize": {
+            "w": 92,
+            "h": 68
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 12,
+            "w": 92,
+            "h": 68
+          },
+          "frame": {
+            "x": 1473,
+            "y": 27,
+            "w": 92,
+            "h": 68
+          }
+        },
+        {
+          "filename": "restart",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 72,
+            "h": 64
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 72,
+            "h": 64
+          },
+          "frame": {
+            "x": 1567,
+            "y": 27,
+            "w": 72,
+            "h": 64
+          }
+        },
+        {
+          "filename": "dino-duck-1",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 118,
+            "h": 60
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 60
+          },
+          "frame": {
+            "x": 1641,
+            "y": 27,
+            "w": 118,
+            "h": 60
+          }
+        },
+        {
+          "filename": "dino-duck-2",
+          "rotated": false,
+          "trimmed": false,
+          "sourceSize": {
+            "w": 118,
+            "h": 60
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 118,
+            "h": 60
+          },
+          "frame": {
+            "x": 1761,
+            "y": 27,
+            "w": 118,
+            "h": 60
+          }
+        },
+        {
+          "filename": "bird-2",
+          "rotated": false,
+          "trimmed": true,
+          "sourceSize": {
+            "w": 92,
+            "h": 68
+          },
+          "spriteSourceSize": {
+            "x": 0,
+            "y": 0,
+            "w": 92,
+            "h": 60
+          },
+          "frame": {
+            "x": 1881,
+            "y": 27,
+            "w": 92,
+            "h": 60
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "3.0",
+    "smartupdate": "$TexturePacker:SmartUpdate:2a74979e1bd61beb486d62d8f4dc33b3:0b1cec3a288a2a331fef65a521c112bf:45b8b72db3c28d28378c06fc7bde0770$"
+  }
+}

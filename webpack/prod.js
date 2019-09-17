@@ -26,6 +26,7 @@ module.exports = merge.smart(base, {
       {
         from: 'assets',
         to: 'assets',
+        ignore: ['**/_raw/**/*.*', '**/README.md'],
       },
     ]),
     new MiniCssExtractPlugin({

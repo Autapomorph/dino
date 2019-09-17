@@ -1,0 +1,48 @@
+<font>
+  <info face="font" size="72" bold="0" italic="0" charset="" unicode="" stretchH="100" smooth="1" aa="1" padding="2,2,2,2" spacing="0,0" outline="0"/>
+  <common lineHeight="86" base="51" scaleW="214" scaleH="479" pages="1" packed="0"/>
+  <pages>
+    <page id="0" file="font.png"/>
+  </pages>
+  <chars count="28">
+    <char id="72" x="2" y="2" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="73" x="2" y="55" width="44" height="51" xoffset="8" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="104" x="2" y="108" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="105" x="48" y="55" width="44" height="51" xoffset="8" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="71" x="55" y="2" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="65" x="2" y="161" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="77" x="2" y="214" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="69" x="2" y="267" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="79" x="2" y="320" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="86" x="2" y="373" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="82" x="2" y="426" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="103" x="55" y="108" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="97" x="94" y="55" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="109" x="108" y="2" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="101" x="55" y="161" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="111" x="55" y="214" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="118" x="55" y="267" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="114" x="55" y="320" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="48" x="55" y="373" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="49" x="55" y="426" width="44" height="51" xoffset="8" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="50" x="101" y="426" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="51" x="108" y="108" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="52" x="147" y="55" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="53" x="161" y="2" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="54" x="108" y="161" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="55" x="108" y="214" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="56" x="108" y="267" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="57" x="108" y="320" width="51" height="51" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+    <char id="32" x="0" y="0" width="0" height="0" xoffset="5" yoffset="0" xadvance="60" page="0" chnl="15"/>
+  </chars>
+  <kernings count="8">
+    <kerning first="49" second="52" amount="-4"/>
+    <kerning first="49" second="55" amount="-5"/>
+    <kerning first="52" second="55" amount="-4"/>
+    <kerning first="53" second="55" amount="-4"/>
+    <kerning first="54" second="55" amount="-4"/>
+    <kerning first="55" second="51" amount="-5"/>
+    <kerning first="55" second="52" amount="-4"/>
+    <kerning first="56" second="55" amount="-4"/>
+  </kernings>
+</font>

@@ -1,22 +1,22 @@
 {
-  "name": "phaser3-project-template",
-  "description": "A Phaser 3 Project Template",
-  "version": "1.1.0",
-  "homepage": "https://github.com/Autapomorph/phaser3-project-template",
+  "name": "dino",
+  "description": "A Chrome Dino game clone built with Phaser 3",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Autapomorph/dino",
   "author": "Autapomorph (https://github.com/Autapomorph)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Autapomorph/phaser3-project-template.git"
+    "url": "git+https://github.com/Autapomorph/dino"
+  },
+  "bugs": {
+    "url": "https://github.com/Autapomorph/dino/issues"
   },
   "license": "MIT",
   "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
-  "bugs": {
-    "url": "https://github.com/Autapomorph/phaser3-project-template/issues"
-  },
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack/base.js --open",
-    "build": "webpack --config webpack/prod.js ",
+    "build": "webpack --config webpack/prod.js",
     "now-build": "npm run build && mv dist public",
     "lint": "run-s -c lint:js lint:styles",
     "lint:js": "eslint src/**/*.js",
@@ -44,6 +44,7 @@
     "file-loader": "^4.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.5",
     "lint-staged": "^9.2.5",
     "mini-css-extract-plugin": "^0.8.0",
     "npm-run-all": "^4.1.5",
