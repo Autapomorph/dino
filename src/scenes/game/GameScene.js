@@ -198,6 +198,8 @@ class GameScene extends Phaser.Scene {
     this.speed = 0;
     this.maxSpeed = 0;
     this.initSpeed();
+
+    this.physics.resume();
   }
 
   /**
@@ -205,6 +207,8 @@ class GameScene extends Phaser.Scene {
    */
   onGameOver() {
     this.isPlaying = false;
+
+    this.physics.pause();
 
     if (this.game.device.features.vibration) {
       navigator.vibrate(GameScene.CONFIG.GAMEOVER.VIBRATION);

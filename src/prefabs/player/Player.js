@@ -140,7 +140,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   die() {
     this.setState(Player.CONFIG.STATES.DEAD);
     this.animationManager.update();
-    this.physicsManager.die();
+    this.physicsManager.reset();
 
     // set dead sprite pos to match run|jump sprite pos (substract 4px)
     this.setY(this.y - 4);
@@ -152,7 +152,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   reset() {
     this.setState(Player.CONFIG.STATES.IDLING);
     this.animationManager.update();
-    this.physicsManager.reset();
 
     // little hack to set y to default because
     // this.setY(Player.CONFIG.POS.Y) causes player to fall through the ground

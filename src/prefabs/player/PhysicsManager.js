@@ -40,20 +40,6 @@ class PhysicsManager {
   }
 
   /**
-   * Enable physics
-   */
-  enable() {
-    this.scene.physics.world.enable(this.player);
-  }
-
-  /**
-   * Disable physics
-   */
-  disable() {
-    this.scene.physics.world.disable(this.player);
-  }
-
-  /**
    * Handle player jump
    */
   jump() {
@@ -61,18 +47,10 @@ class PhysicsManager {
   }
 
   /**
-   * Handle player dead
-   */
-  die() {
-    this.player.setVelocityY(0);
-    this.disable();
-  }
-
-  /**
    * Reset physicsManager
    */
   reset() {
-    this.enable();
+    this.player.setVelocityY(0);
   }
 }
 
