@@ -4,8 +4,12 @@ module.exports = {
   useTabs: false,
   semi: true,
   singleQuote: true,
+  quoteProps: 'as-needed',
+  jsxSingleQuote: false,
   trailingComma: 'all',
   bracketSpacing: true,
   jsxBracketSameLine: false,
   arrowParens: 'avoid',
+  vueIndentScriptAndStyle: true,
+  endOfLine: 'lf',
 };

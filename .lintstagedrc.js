@@ -1,5 +1,18 @@
+const { CLIEngine } = require('eslint');
+
 module.exports = {
-  'src/**/*.js': ['prettier --write', 'eslint --max-warnings=0', 'git add'],
-  'src/**/*.css': ['prettier --write', 'stylelint --fix', 'git add'],
-  '*.{json,md}': ['prettier --write', 'git add'],
+  '*.{js,jsx,ts,tsx}': filenames => {
+    const filenamesString = filenames.join(' ');
+    const eslintMatch = filenames.filter(file => !new CLIEngine({}).isPathIgnored(file)).join(' ');
+
+    return [
+      `prettier --write ${filenamesString}`,
+      `stylelint ${filenamesString}`,
+      `eslint --max-warnings=0 ${eslintMatch}`,
+    ];
+  },
+
+  '*.{css,scss,sass,less}': ['prettier --write', 'stylelint --fix'],
+
+  '*.{json,md}': [`prettier --write`],
 };
