@@ -29,7 +29,7 @@ const GAME = {
       GAMEOVER: {
         FLASH: {
           DURATION: 250,
-          ITERATIONS: 4,
+          ITERATIONS: 6,
         },
       },
     },

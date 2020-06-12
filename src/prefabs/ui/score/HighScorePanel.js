@@ -64,7 +64,7 @@ class HighScorePanel extends BaseScorePanel {
     const onStart = () => this.scoreText.clearTint();
     const onComplete = () => this.scoreText.setTintFill(0x757575);
 
-    return super.createFlashTween(DURATION, ITERATIONS * 2, onStart, onComplete);
+    return super.createFlashTween(DURATION, ITERATIONS, onStart, onComplete);
   }
 
   /**

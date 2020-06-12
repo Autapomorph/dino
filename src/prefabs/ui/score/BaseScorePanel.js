@@ -74,13 +74,13 @@ class BaseScorePanel {
       duration: 0,
       alpha: {
         start: 1,
-        to: 0,
+        to: 10e-3,
       },
       repeat: iterations,
       repeatDelay: duration,
       yoyo: true,
       hold: duration,
-      completeDelay: duration * 2,
+      completeDelay: duration,
       onStart: () => {
         this.isFlashing = true;
         onStart();
