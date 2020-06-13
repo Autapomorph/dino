@@ -2,6 +2,10 @@ import Phaser from 'phaser';
 
 import CONFIG from '../../config/game';
 
+/**
+ * Game input manager
+ * @class InputManager
+ */
 class InputManager {
   /**
    * InputManager

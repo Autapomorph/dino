@@ -1,7 +1,7 @@
 import CONFIG from '../../../../config/game';
 
 /**
- * Bird AnimationManager
+ * Bird animation manager
  * @class AnimationManager
  */
 class AnimationManager {

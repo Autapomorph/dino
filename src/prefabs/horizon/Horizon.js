@@ -54,7 +54,7 @@ class Horizon {
   }
 
   /**
-   * Set 1st horizon state
+   * Set first horizon state
    */
   start() {
     const { speed } = this.scene;

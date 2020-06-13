@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 import CONFIG from '../../config/game';
 
 /**
- * Player AnimationManager
+ * Player animation manager
  * @class AnimationManager
  */
 class AnimationManager {

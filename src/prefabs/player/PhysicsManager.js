@@ -1,7 +1,7 @@
 import CONFIG from '../../config/game';
 
 /**
- * PhysicsManager
+ * Player physics manager
  * @class PhysicsManager
  */
 class PhysicsManager {

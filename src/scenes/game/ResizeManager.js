@@ -1,7 +1,7 @@
 import CONFIG from '../../config/game';
 
 /**
- * ResizeManager
+ * Resize manager
  * @class ResizeManager
  */
 class ResizeManager {

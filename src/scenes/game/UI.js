@@ -5,7 +5,7 @@ import GameOverPanel from '../../prefabs/ui/gameover/GameOverPanel';
 import isTelegramMode from '../../utils/telegram/isTelegramMode';
 
 /**
- * UI
+ * Game UI manager
  * @class UI
  */
 class UI {

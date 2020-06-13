@@ -4,16 +4,16 @@ A Chrome T-Rex Runner dino game (chrome://dino) clone built with [Phaser 3](http
 
 ## Demo
 
-Play [online](https://dino.autapomorph.now.sh)
+Play [online](https://t-rex.vercel.app)
 
 ## Running Locally
 
-### How to run?
+### How to run
 
 - `npm i`
 - `npm start`
 
-### How to build?
+### How to build
 
 - `npm run build`
 - `npx serve dist`

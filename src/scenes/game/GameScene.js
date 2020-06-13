@@ -13,7 +13,7 @@ import Horizon from '../../prefabs/horizon/Horizon';
 import isTelegramMode from '../../utils/telegram/isTelegramMode';
 
 /**
- * GameScene
+ * Main game scene
  * @class GameScene
  * @extends {Phaser.Scene}
  */

@@ -6,7 +6,7 @@ import Cactus from './cactus/Cactus';
 import Bird from './bird/Bird';
 
 /**
- * Obstacles Group
+ * Obstacles group
  * @class Obstacles
  * @extends {HorizonItems}
  */

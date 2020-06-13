@@ -1,7 +1,7 @@
 import CONFIG from '../../config/game';
 
 /**
- * Intro
+ * Game intro
  * @class Intro
  */
 class Intro {

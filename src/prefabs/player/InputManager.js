@@ -1,5 +1,5 @@
 /**
- * InputManager
+ * Player input manager
  * @class InputManager
  */
 class InputManager {

@@ -1,7 +1,7 @@
 import CONFIG from '../../config/game';
 
 /**
- * SoundManager
+ * Sound manager
  * @class SoundManager
  */
 class SoundManager {

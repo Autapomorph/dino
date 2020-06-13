@@ -4,7 +4,7 @@ import CONFIG from '../../config/game';
 import GameScene from '../game/GameScene';
 
 /**
- * BootScene
+ * Boot game scene
  * @class BootScene
  * @extends {Phaser.Scene}
  */

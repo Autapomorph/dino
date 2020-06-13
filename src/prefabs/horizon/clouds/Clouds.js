@@ -5,7 +5,7 @@ import HorizonItems from '../HorizonItems';
 import Cloud from './Cloud';
 
 /**
- * Clouds Group
+ * Clouds group
  * @class Clouds
  * @extends {HorizonItems}
  */
