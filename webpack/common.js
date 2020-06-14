@@ -1,3 +1,4 @@
+const path = require('path');
 const { EnvironmentPlugin } = require('webpack');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const WebpackBar = require('webpackbar');
@@ -10,6 +11,11 @@ module.exports = {
   output: {
     filename: '[name].js',
     chunkFilename: '[name].js',
+  },
+  resolve: {
+    alias: {
+      phaser: path.resolve(__dirname, '../node_modules/phaser/dist/phaser-arcade-physics'),
+    },
   },
   module: {
     rules: [

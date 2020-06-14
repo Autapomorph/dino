@@ -9,6 +9,8 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const commonConfig = require('./common');
 
+process.env.NODE_ENV = 'production';
+
 module.exports = (env = {}) =>
   mergeWithCustomize({
     customizeArray(a, b, key) {
@@ -87,8 +89,8 @@ module.exports = (env = {}) =>
       ],
     },
     performance: {
-      maxEntrypointSize: 1.2 * 1024 * 1024,
-      maxAssetSize: 1.2 * 1024 * 1024,
+      maxEntrypointSize: 1 * 1024 * 1024,
+      maxAssetSize: 1 * 1024 * 1024,
     },
     stats: {
       all: false,
