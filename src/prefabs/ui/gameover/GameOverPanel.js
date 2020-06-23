@@ -10,48 +10,27 @@ class GameOverPanel {
    * @param {Phaser.Scene} scene - The Scene to which this Player belongs
    */
   constructor(scene) {
+    const gameWidth = scene.scale.gameSize.width;
+    const gameHeight = scene.scale.gameSize.height;
+
     this.scene = scene;
+    this.zone = scene.add.zone().setOrigin(0, 0);
+    this.gameOverText = scene.add
+      .bitmapText(gameWidth / 2, gameHeight / 2 - 75, 'joystix', 'G A M E  O V E R', 32)
+      .setOrigin(0.5, 0.5)
+      .setDepth(9999)
+      .setVisible(false);
+    this.restartImg = scene.add
+      .image(gameWidth / 2, gameHeight / 2, 'dino', 'restart')
+      .setOrigin(0.5, 0.5)
+      .setDepth(9999)
+      .setVisible(false);
 
-    this.init();
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initImage();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
+    // Register event handlers
     this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.show, this);
     this.scene.events.on(CONFIG.EVENTS.GAME_RESTART, this.hide, this);
     this.zone.on('pointerdown', this.onClick, this);
     this.zone.on('pointerup', this.onClick, this);
-  }
-
-  /**
-   * Init image
-   */
-  initImage() {
-    const { width, height } = this.scene.scale.gameSize;
-
-    this.gameOverText = this.scene.add
-      .bitmapText(width / 2, height / 2 - 75, 'joystix', 'G A M E  O V E R', 32)
-      .setOrigin(0.5, 0.5)
-      .setDepth(9999)
-      .setVisible(false);
-
-    this.restartImg = this.scene.add
-      .image(width / 2, height / 2, 'dino', 'restart')
-      .setOrigin(0.5, 0.5)
-      .setDepth(9999)
-      .setVisible(false);
-
-    this.zone = this.scene.add.zone().setOrigin(0, 0);
   }
 
   /**

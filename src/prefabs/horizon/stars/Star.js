@@ -20,23 +20,11 @@ class Star extends Phaser.GameObjects.Image {
   constructor(scene, x, y, frame = Phaser.Math.RND.pick(Star.CONFIG.FRAMES)) {
     super(scene, x, y, 'dino', frame);
 
-    this.init();
-    this.scene.add.existing(this);
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initImage();
-  }
-
-  /**
-   * Init image
-   */
-  initImage() {
+    // Init image
     this.setOrigin(0, 0);
     this.setDepth(100);
+
+    this.scene.add.existing(this);
   }
 
   /**

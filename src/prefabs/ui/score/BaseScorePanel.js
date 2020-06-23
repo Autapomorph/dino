@@ -14,30 +14,19 @@ class BaseScorePanel {
   constructor(scene) {
     this.scene = scene;
 
-    this.init();
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initVars();
-    this.initText();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
     this.isFlashing = false;
     this.flashTween = this.createFlashTween();
-
     // set maxScore to 10^MAX_LENGTH - 1 e.g. MAX_LENGTH = 5 so maxScore = 10^5 - 1 = 99_999
     this.maxScoreLength = BaseScorePanel.CONFIG.MAX_LENGTH;
     this.maxScore = 10 ** (this.maxScoreLength - 1) - 1;
-
     this.defaultString = '';
+
+    // Register event handlers
+    this.scene.events.on(CONFIG.EVENTS.GAME_START, this.onStart, this);
+    this.scene.events.on(CONFIG.EVENTS.GAME_RESTART, this.onRestart, this);
+    this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.onGameOver, this);
+
+    this.createScoreText();
   }
 
   /**
@@ -46,18 +35,9 @@ class BaseScorePanel {
    * @throws Will throw an error if not implemented
    */
   // eslint-disable-next-line class-methods-use-this
-  initText() {
+  createScoreText() {
     // create scoreText: BitmapText var here
     throw new Error('Method must be implemented by subclass');
-  }
-
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
-    this.scene.events.on(CONFIG.EVENTS.GAME_START, this.onStart, this);
-    this.scene.events.on(CONFIG.EVENTS.GAME_RESTART, this.onRestart, this);
-    this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.onGameOver, this);
   }
 
   /**
@@ -147,7 +127,10 @@ class BaseScorePanel {
    * Handle game restart
    */
   onRestart() {
-    this.initVars();
+    this.isFlashing = false;
+    this.flashTween = this.createFlashTween();
+    this.maxScoreLength = BaseScorePanel.CONFIG.MAX_LENGTH;
+    this.maxScore = 10 ** (this.maxScoreLength - 1) - 1;
   }
 
   /**

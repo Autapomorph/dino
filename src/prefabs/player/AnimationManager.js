@@ -16,13 +16,21 @@ class AnimationManager {
   constructor(player) {
     this.player = player;
 
-    this.init();
-    this.initEventHandlers();
+    this.initAnimations();
+
+    // Register event handlers
+    player.on('animationstart', this.resizeBodyOnAnim, this);
+    player.on('animationupdate', this.resizeBodyOnAnim, this);
+    player.on('animationcomplete', this.resizeBodyOnAnim, this);
+    player.on('animationstart-idle', this.calcIdleAnim, this);
+    player.on('animationrepeat-idle', this.calcIdleAnim, this);
   }
 
-  init() {
-    const { player } = this;
-    const { scene } = player;
+  /**
+   * Init animations
+   */
+  initAnimations() {
+    const { scene } = this.player;
 
     const idleFrames = scene.anims.generateFrameNames('dino', {
       frames: AnimationManager.CONFIG.FRAMES.IDLING,
@@ -43,17 +51,6 @@ class AnimationManager {
       frames: AnimationManager.CONFIG.FRAMES.DUCKING,
     });
     scene.anims.create({ key: 'duck', frames: duckFrames, frameRate: 10, repeat: -1 });
-  }
-
-  initEventHandlers() {
-    const { player } = this;
-
-    player.on('animationstart', this.resizeBodyOnAnim, this);
-    player.on('animationupdate', this.resizeBodyOnAnim, this);
-    player.on('animationcomplete', this.resizeBodyOnAnim, this);
-
-    player.on('animationstart-idle', this.calcIdleAnim, this);
-    player.on('animationrepeat-idle', this.calcIdleAnim, this);
   }
 
   /**

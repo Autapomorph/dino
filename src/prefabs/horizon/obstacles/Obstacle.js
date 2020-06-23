@@ -18,39 +18,17 @@ class Obstacle extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x, y, frame) {
     super(scene, x, y, 'dino', frame);
 
-    this.init();
-    this.scene.add.existing(this);
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initVars();
-    this.initImage();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
+    // Gap before next Obstacle
     this.gap = 0;
-  }
 
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
-    this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.freeze, this);
-  }
-
-  /**
-   * Init image
-   */
-  initImage() {
+    // Init image
     this.setOrigin(0, 1);
     this.setDepth(900);
+
+    // Register event handlers
+    this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.freeze, this);
+
+    this.scene.add.existing(this);
   }
 
   /**

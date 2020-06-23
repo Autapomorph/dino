@@ -22,46 +22,24 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x = Player.CONFIG.POS.INITIAL_X, y = Player.CONFIG.POS.Y) {
     super(scene, x, y, 'dino', Player.CONFIG.FRAMES.INITIAL);
 
-    this.init();
-    this.start();
-    this.scene.add.existing(this);
-  }
+    this.readyToIntro = false;
 
-  /**
-   * Init
-   */
-  init() {
-    this.initVars();
-    this.initImage();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
+    // Init managers
     this.physicsManager = new PhysicsManager(this);
     this.inputManager = new InputManager(this);
     this.animationManager = new AnimationManager(this);
 
-    this.readyToIntro = false;
-  }
-
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
-    this.scene.events.on(CONFIG.EVENTS.GAME_INTRO_START, this.intro, this);
-    this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.die, this);
-    this.scene.events.on(CONFIG.EVENTS.GAME_RESTART, this.reset, this);
-  }
-
-  /**
-   * Init image
-   */
-  initImage() {
+    // Init image
     this.setOrigin(0, 1);
     this.setDepth(1000);
+
+    // Register event handlers
+    this.scene.events.on(CONFIG.EVENTS.GAME_RESTART, this.reset, this);
+    this.scene.events.on(CONFIG.EVENTS.GAME_INTRO_START, this.intro, this);
+    this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.die, this);
+
+    this.start();
+    this.scene.add.existing(this);
   }
 
   /**

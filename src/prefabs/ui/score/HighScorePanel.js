@@ -32,22 +32,11 @@ class HighScorePanel extends BaseScorePanel {
   }
 
   /**
-   * Init variables
-   * @override
-   */
-  initVars() {
-    super.initVars();
-    this.defaultString = 'HI ';
-  }
-
-  /**
    * Create {Phaser.GameObjects. BitmapText} `scoreText`
    * @override
    */
-  initText() {
-    const { scene } = this;
-
-    this.scoreText = scene.add
+  createScoreText() {
+    this.scoreText = this.scene.add
       .bitmapText(0, 0, 'joystix', '', 32)
       .setTintFill(0x757575)
       .setOrigin(1, 0)

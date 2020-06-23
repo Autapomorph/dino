@@ -20,23 +20,11 @@ class InputManager {
   constructor(scene) {
     this.scene = scene;
 
-    this.init();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init
-   */
-  init() {
     this.cursors = this.scene.input.keyboard.createCursorKeys();
     this.enterKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-  }
 
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
-    this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.onGameOver, this);
+    // Register event handlers
+    scene.events.on(CONFIG.EVENTS.GAME_OVER, this.onGameOver, this);
   }
 
   /**

@@ -25,26 +25,21 @@ class GameScene extends Phaser.Scene {
   }
 
   init() {
-    this.initVars();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
-    this.width = this.scale.gameSize.width;
-
+    // Init game state vars
     this.isInitialStart = true;
     this.isPlaying = false;
     this.readyToRestart = false;
 
+    // Init speed vars
     this.speed = 0;
     this.maxSpeed = 0;
     this.initSpeed();
+
+    // Init scoring vars
     this.distance = 0;
     this.highScore = 0;
 
+    // Init managers
     this.soundManager = new SoundManager(this);
     this.inputManager = new InputManager(this);
     this.resizeManager = new ResizeManager(this, {
@@ -63,13 +58,7 @@ class GameScene extends Phaser.Scene {
     this.events.on(CONFIG.EVENTS.GAME_INTRO_COMPLETE, this.onIntroComplete, this);
     this.events.on(CONFIG.EVENTS.GAME_RESTART, this.onGameRestart, this);
     this.events.on(CONFIG.EVENTS.GAME_OVER, this.onGameOver, this);
-    this.events.on(CONFIG.EVENTS.HIGH_SCORE_RECORD, this.onHighScoreUpdate, this);
-    this.events.on(CONFIG.EVENTS.HIGH_SCORE_RESET, this.onHighScoreUpdate, this);
-    // High score async events
-    this.events.on(CONFIG.EVENTS.HIGH_SCORE_SAVE.SUCCESS, this.onHighScoreSave, this);
-    // Input events
-    this.input.once('pointerup', this.resumeAudioContext, this);
-    this.input.keyboard.once('keyup', this.resumeAudioContext, this);
+    this.events.on(CONFIG.EVENTS.HIGH_SCORE_UPDATE, this.onHighScoreUpdate, this);
   }
 
   /**
@@ -161,9 +150,7 @@ class GameScene extends Phaser.Scene {
   onGameStart() {
     this.isPlaying = true;
     this.isInitialStart = false;
-
     this.player.jump();
-
     this.ui.highScorePanel.setScore(this.highScore);
   }
 
@@ -172,7 +159,6 @@ class GameScene extends Phaser.Scene {
    */
   onIntroStart() {
     const { width } = this.scale.gameSize;
-
     this.tweens.add({
       targets: this.cameras.main,
       duration: GameScene.CONFIG.INTRO.DURATION,
@@ -266,7 +252,6 @@ class GameScene extends Phaser.Scene {
   get shouldNightModeStart() {
     const { score, nightMode } = this;
     const { DISTANCE } = GameScene.CONFIG.NIGHTMODE;
-
     return score > 0 && score % DISTANCE === 0 && !nightMode.isEnabled;
   }
 
@@ -330,16 +315,6 @@ class GameScene extends Phaser.Scene {
   onResizeGameObjects(gameSize) {
     this.ui.resize(gameSize);
     this.ground.resize(gameSize);
-  }
-
-  /**
-   * Resume audio context if suspended
-   */
-  resumeAudioContext() {
-    const { context } = this.game.sound;
-    if (context && context.state === 'suspended') {
-      context.resume();
-    }
   }
 }
 

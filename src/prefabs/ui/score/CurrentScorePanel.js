@@ -13,10 +13,11 @@ class CurrentScorePanel extends BaseScorePanel {
    * Create {Phaser.GameObjects. BitmapText} `scoreText`
    * @override
    */
-  initText() {
-    const { scene } = this;
-
-    this.scoreText = scene.add.bitmapText(0, 0, 'joystix', '', 32).setOrigin(1, 0).setDepth(9999);
+  createScoreText() {
+    this.scoreText = this.scene.add
+      .bitmapText(0, 0, 'joystix', '', 32)
+      .setOrigin(1, 0)
+      .setDepth(9999);
   }
 
   /**

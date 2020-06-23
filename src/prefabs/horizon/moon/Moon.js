@@ -20,31 +20,14 @@ class Moon extends Phaser.GameObjects.Image {
   constructor(scene, x, y, frame = Moon.CONFIG.FRAMES[0]) {
     super(scene, x, y, 'dino', frame);
 
-    this.init();
-    this.scene.add.existing(this);
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initVars();
-    this.initImage();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
+    // Current moon phase
     this.phase = 0;
-  }
 
-  /**
-   * Init image
-   */
-  initImage() {
+    // Init image
     this.setOrigin(0, 0);
     this.setDepth(200);
+
+    this.scene.add.existing(this);
   }
 
   /**

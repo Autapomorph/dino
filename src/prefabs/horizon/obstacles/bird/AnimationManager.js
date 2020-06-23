@@ -14,23 +14,13 @@ class AnimationManager {
   constructor(bird) {
     this.bird = bird;
 
-    this.init();
-    this.initEventHandlers();
-  }
-
-  init() {
-    const { bird } = this;
-    const { scene } = bird;
-
-    const flyFrames = scene.anims.generateFrameNames('dino', {
+    // Init animation
+    const flyFrames = bird.scene.anims.generateFrameNames('dino', {
       frames: AnimationManager.CONFIG.FRAMES.FLYING,
     });
-    scene.anims.create({ key: 'fly', frames: flyFrames, frameRate: 6, repeat: -1 });
-  }
+    bird.scene.anims.create({ key: 'fly', frames: flyFrames, frameRate: 6, repeat: -1 });
 
-  initEventHandlers() {
-    const { bird } = this;
-
+    // Register event handlers
     bird.on('animationstart', this.resizeBodyOnAnim, this);
     bird.on('animationupdate', this.resizeBodyOnAnim, this);
   }

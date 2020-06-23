@@ -15,31 +15,14 @@ class Cloud extends Phaser.GameObjects.Image {
   constructor(scene, x, y) {
     super(scene, x, y, 'dino', 'cloud');
 
-    this.init();
-    this.scene.add.existing(this);
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initVars();
-    this.initImage();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
+    // Gap before next Cloud
     this.gap = 0;
-  }
 
-  /**
-   * Init image
-   */
-  initImage() {
+    // Init image
     this.setOrigin(0, 0);
     this.setDepth(300);
+
+    this.scene.add.existing(this);
   }
 
   /**

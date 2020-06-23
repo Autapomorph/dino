@@ -18,44 +18,26 @@ class NightMode {
    * @param {Phaser.Scene} scene - The Scene to which this NightMode belongs
    */
   constructor(scene) {
+    const { FADE_DURATION } = NightMode.CONFIG.NIGHTMODE;
+    const gameWidth = scene.scale.gameSize.width;
+
     this.scene = scene;
-
-    this.init();
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initVars();
-    this.initParent();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
-    const { scene } = this;
-    const { width } = scene.scale.gameSize;
-
     this.isEnabled = false;
 
-    this.moon = new Moon(scene, width - 50, NightMode.CONFIG.MOON.POS.Y);
+    // Moon
+    this.moon = new Moon(scene, gameWidth - 50, NightMode.CONFIG.MOON.POS.Y);
     this.moon.setAlpha(0);
 
+    // Stars
     this.stars = new Stars(scene);
     this.stars.spawnItems();
     this.stars.children.each(star => star.setAlpha(0));
-  }
 
-  /**
-   * Init game DOM parent
-   */
-  initParent() {
-    const { FADE_DURATION } = NightMode.CONFIG.NIGHTMODE;
+    // DOM canvas and parent elements
+    this.canvas = scene.game.canvas;
+    this.parent = scene.game.scale.parent;
 
-    this.canvas = this.scene.game.canvas;
-    this.parent = this.scene.game.scale.parent;
+    // Set DOM elements transitions
     this.canvas.style.transition = `filter ${FADE_DURATION}ms linear`;
     this.parent.style.transition = `background-color ${FADE_DURATION}ms linear`;
   }
@@ -87,6 +69,7 @@ class NightMode {
 
   /**
    * Set nightmode enabled property
+   * @param {boolean} isEnabled - Enable or disable NightMode
    * @returns {boolean}
    */
   set isEnabled(isEnabled) {

@@ -21,14 +21,7 @@ class Bird extends Obstacle {
    */
   constructor(scene, x, y) {
     super(scene, x, y, Bird.CONFIG.FRAMES.INITIAL);
-  }
 
-  /**
-   * Init variables
-   * @override
-   */
-  initVars() {
-    super.initVars();
     this.animationManager = new AnimationManager(this);
     this.speedOffset = Phaser.Math.RND.pick(Bird.CONFIG.SPEED.OFFSET);
   }

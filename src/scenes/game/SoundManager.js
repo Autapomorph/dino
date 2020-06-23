@@ -12,27 +12,11 @@ class SoundManager {
   constructor(scene) {
     this.scene = scene;
 
-    this.init();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    const { scene } = this;
-
     this.playerAction = scene.sound.add('player-action');
     this.achievement = scene.sound.add('achievement');
     this.gameover = scene.sound.add('gameover');
-  }
 
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
-    const { scene } = this;
-
+    // Register event handlers
     scene.events.on(CONFIG.EVENTS.PLAYER_ACTION, this.playPlayerAction, this);
     scene.events.on(CONFIG.EVENTS.ACHIEVEMENT, this.playAchievement, this);
     scene.events.on(CONFIG.EVENTS.GAME_OVER, this.playGameOver, this);

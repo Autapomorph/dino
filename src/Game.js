@@ -19,15 +19,15 @@ class Game extends Phaser.Game {
   constructor(config) {
     super(config);
 
-    this.initEventHandlers();
+    this.registerResizeHandler();
     this.addScenes();
     this.startScene();
   }
 
   /**
-   * Init event handlers
+   * Register reize handler
    */
-  initEventHandlers() {
+  registerResizeHandler() {
     this.scale.on('resize', () => {
       const { parentSize } = this.scale;
       const { width, height } = parentSize;

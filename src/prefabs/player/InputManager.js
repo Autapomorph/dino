@@ -10,14 +10,6 @@ class InputManager {
   constructor(player) {
     this.player = player;
     this.scene = player.scene;
-
-    this.init();
-  }
-
-  /**
-   * Init
-   */
-  init() {
     this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 

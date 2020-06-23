@@ -19,35 +19,17 @@ class Ground extends Phaser.GameObjects.TileSprite {
   constructor(scene, x = Ground.CONFIG.POS.X, y = Ground.CONFIG.POS.Y) {
     super(scene, x, y, 0, 0, 'dino', 'ground');
 
-    this.init();
-    this.scene.add.existing(this);
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initImage();
-    this.initPhysics();
-  }
-
-  /**
-   * Init image
-   */
-  initImage() {
-    const { width, height } = this.scene.scale.gameSize;
-
-    this.setY(height);
+    // Init image
+    const gameSize = this.scene.scale;
+    this.setY(gameSize.height);
     this.setOrigin(0, 2);
-    this.setSize(width, this.height);
-  }
+    this.setSize(gameSize.width, this.height);
 
-  /**
-   * Init physics
-   */
-  initPhysics() {
+    // Init physics
     this.scene.physics.world.enable(this, Phaser.Physics.Arcade.STATIC_BODY);
     this.body.setOffset(0, Ground.CONFIG.BODY.OFFSET.Y);
+
+    this.scene.add.existing(this);
   }
 
   /**

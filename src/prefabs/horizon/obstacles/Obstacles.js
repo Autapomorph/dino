@@ -25,13 +25,6 @@ class Obstacles extends HorizonItems {
   constructor(scene) {
     super(scene);
 
-    this.initVars();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
     this.obstacleHistory = [];
   }
 
@@ -150,7 +143,7 @@ class Obstacles extends HorizonItems {
 
   reset() {
     super.reset();
-    this.initVars();
+    this.obstacleHistory = [];
   }
 }
 

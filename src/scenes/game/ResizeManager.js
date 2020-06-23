@@ -24,24 +24,10 @@ class ResizeManager {
       gameObjects,
     };
 
-    this.init();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init
-   */
-  init() {
     this.gameWidth = this.scale.gameSize.width;
-  }
 
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
-    this.scale.on('resize', () => {
-      this.resize(this.scale.gameSize, this.scale.parentSize);
-    });
+    // Register event handlers
+    this.scale.on('resize', () => this.resize(this.scale.gameSize, this.scale.parentSize));
   }
 
   /**

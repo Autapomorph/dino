@@ -15,16 +15,6 @@ class UI {
    */
   constructor(scene) {
     this.scene = scene;
-
-    this.init();
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    const { scene } = this;
-
     this.gameOverPanel = new GameOverPanel(scene);
     this.currentScorePanel = new CurrentScorePanel(scene);
     this.highScorePanel = new HighScorePanel(scene, isTelegramMode());

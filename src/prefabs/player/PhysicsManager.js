@@ -15,16 +15,8 @@ class PhysicsManager {
     this.player = player;
     this.scene = player.scene;
 
-    this.init();
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    const { scene, player } = this;
-
-    scene.physics.world.enable(player);
+    // Init physics
+    this.scene.physics.world.enable(player);
     player.setCollideWorldBounds(true);
     player.setGravityY(PhysicsManager.CONFIG.GRAVITY.Y);
     player.setAccelerationY(PhysicsManager.CONFIG.JUMP.ACCELERATION);

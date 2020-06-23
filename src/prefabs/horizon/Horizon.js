@@ -21,34 +21,12 @@ class Horizon {
    */
   constructor(scene) {
     this.scene = scene;
-
-    this.init();
-  }
-
-  /**
-   * Init
-   */
-  init() {
-    this.initVars();
-    this.initEventHandlers();
-  }
-
-  /**
-   * Init variables
-   */
-  initVars() {
-    const { scene } = this;
-
     this.ground = new Ground(scene);
     this.obstacles = new Obstacles(scene);
     this.clouds = new Clouds(scene);
     this.nightMode = new NightMode(scene);
-  }
 
-  /**
-   * Init event handlers
-   */
-  initEventHandlers() {
+    // Register event handlers
     this.scene.events.on(CONFIG.EVENTS.GAME_INTRO_COMPLETE, this.start, this);
     this.scene.events.on(CONFIG.EVENTS.GAME_RESTART, this.reset, this);
   }
@@ -58,7 +36,6 @@ class Horizon {
    */
   start() {
     const { speed } = this.scene;
-
     this.spawnInitialCloud(speed);
     this.spawnInitialObstacle(speed);
   }
@@ -78,7 +55,6 @@ class Horizon {
    */
   spawnInitialObstacle(speed, isMobile) {
     const obstacleSpawnDelay = Horizon.CONFIG.OBSTACLES.SPAWN.DELAY;
-
     this.scene.time.delayedCall(obstacleSpawnDelay, () =>
       this.obstacles.spawnItem(speed, isMobile),
     );
@@ -101,7 +77,6 @@ class Horizon {
    */
   reset() {
     const { speed } = this.scene;
-
     this.ground.reset();
     this.obstacles.reset();
     this.nightMode.reset();
