@@ -96,8 +96,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * Set player jumping
    */
   jump() {
-    // Allow intro to start after 1st landing
-    if (!this.isInitialJump && this.scene.intro.isWaiting) {
+    // Allow intro to start after 1st landing even if holding jump key
+    if (this.isOnFloor && !this.isInitialJump && this.scene.intro.isWaiting) {
       this.run();
       return;
     }
@@ -105,9 +105,16 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.setState(Player.CONFIG.STATES.JUMPING);
     this.physicsManager.jump();
-    if (!this.scene.intro.isWaiting) {
+    if (!this.scene.intro.isWaiting && this.isOnFloor) {
       this.scene.events.emit(CONFIG.EVENTS.PLAYER_ACTION);
     }
+  }
+
+  /**
+   * Set player speed fall
+   */
+  speedFall() {
+    this.physicsManager.speedFall();
   }
 
   /**

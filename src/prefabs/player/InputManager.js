@@ -31,8 +31,17 @@ class InputManager {
       } else {
         player.run();
       }
-    } else {
-      player.idle();
+      return;
+    }
+
+    if (!player.isOnFloor) {
+      if (this.isDuckKeyPressed) {
+        player.speedFall();
+      } else if (this.isJumpKeyPressed) {
+        player.jump();
+      } else {
+        player.idle();
+      }
     }
   }
 

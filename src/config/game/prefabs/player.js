@@ -17,7 +17,11 @@ const PLAYER = {
   },
   JUMP: {
     VELOCITY: {
-      Y: 1675 * -1,
+      MAX: 1500,
+      START: 1500 * 0.9 * -1,
+      SPEED_FALL: 1500 * 0.75,
+      INCREASE_INCREMENT: 75 * -1,
+      INCREASE_THRESHOLD: 200 * -1,
     },
     ACCELERATION: 3200,
   },

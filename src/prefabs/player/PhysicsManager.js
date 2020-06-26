@@ -18,8 +18,10 @@ class PhysicsManager {
     // Init physics
     this.scene.physics.world.enable(player);
     player.setCollideWorldBounds(true);
-    player.setGravityY(PhysicsManager.CONFIG.GRAVITY.Y);
+    player.setGravityY(PhysicsManager.CONFIG.GRAVITY.Y * 2);
     player.setAccelerationY(PhysicsManager.CONFIG.JUMP.ACCELERATION);
+    // player.setAccelerationY(5000);
+    player.setMaxVelocity(0, PhysicsManager.CONFIG.JUMP.VELOCITY.MAX);
   }
 
   /**
@@ -35,7 +37,26 @@ class PhysicsManager {
    * Handle player jump
    */
   jump() {
-    this.player.setVelocityY(PhysicsManager.CONFIG.JUMP.VELOCITY.Y);
+    // Handle jumping while on floor
+    if (this.isOnFloor) {
+      // this.player.setVelocityY(PhysicsManager.CONFIG.JUMP.VELOCITY.MAX * -1);
+      this.player.setVelocityY(PhysicsManager.CONFIG.JUMP.VELOCITY.START);
+      return;
+    }
+
+    // Handle jumping while mid-air
+    const { INCREASE_THRESHOLD, INCREASE_INCREMENT } = PhysicsManager.CONFIG.JUMP.VELOCITY;
+    const velocityY = this.player.body.velocity.y;
+    if (velocityY < INCREASE_THRESHOLD) {
+      this.player.setVelocityY(velocityY + INCREASE_INCREMENT);
+    }
+  }
+
+  /**
+   * Handle speed fall
+   */
+  speedFall() {
+    this.player.setVelocityY(PhysicsManager.CONFIG.JUMP.VELOCITY.SPEED_FALL);
   }
 
   /**

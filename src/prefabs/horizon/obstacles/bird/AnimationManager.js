@@ -53,10 +53,9 @@ class AnimationManager {
     const bodyZoneXOffset = 12;
     const bodyZoneYOffset = 12;
 
-    // set body offset & size to match sprite pos & size
+    // Resize body to match frame dimensions
     if (name === AnimationManager.CONFIG.FRAMES.FLYING[0]) {
       const frameYOffset = 12;
-
       body.setSize(bodyZoneWidth, bodyZoneHeight);
       body.setOffset(bodyZoneXOffset, frameYOffset + bodyZoneYOffset);
     } else if (name === AnimationManager.CONFIG.FRAMES.FLYING[1]) {
