@@ -12,23 +12,15 @@ class Intro {
    * @param {Phaser.Events.EventEmitter} eventEmitter - The EventEmitter which this Intro uses
    */
   constructor(eventEmitter) {
-    this.setEventEmitter(eventEmitter);
-    this.setState(Intro.CONFIG.STATES.WAITING);
-  }
-
-  /**
-   * Set event emitter
-   * @param {Phaser.Events.EventEmitter} eventEmitter
-   */
-  setEventEmitter(eventEmitter) {
     this.eventEmitter = eventEmitter;
+    this.setState(Intro.CONFIG.STATES.WAITING);
   }
 
   /**
    * Start intro
    */
   start() {
-    this.setState(Intro.CONFIG.STATES.STARTED);
+    this.setState(Intro.CONFIG.STATES.ONGOING);
     this.eventEmitter.emit(CONFIG.EVENTS.GAME_INTRO_START);
   }
 
@@ -52,13 +44,7 @@ class Intro {
       return this;
     }
 
-    const possibleValuesString = Object.values(Intro.CONFIG.STATES)
-      .map(v => `'${v}'`)
-      .join(', ');
-
-    throw new Error(
-      `Invalid Intro State\nPassed: '${state}'\nPossible values: ${possibleValuesString}`,
-    );
+    throw new Error(`Invalid Intro State: ${state}`);
   }
 
   /**
@@ -70,11 +56,11 @@ class Intro {
   }
 
   /**
-   * Check if intro state is `started`
+   * Check if intro state is `ongoing`
    * @readonly
    */
-  get isStarted() {
-    return this.state === Intro.CONFIG.STATES.STARTED;
+  get isOngoing() {
+    return this.state === Intro.CONFIG.STATES.ONGOING;
   }
 
   /**

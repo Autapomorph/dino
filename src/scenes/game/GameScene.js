@@ -150,7 +150,6 @@ class GameScene extends Phaser.Scene {
   onGameStart() {
     this.isPlaying = true;
     this.isInitialStart = false;
-    this.player.jump();
     this.ui.highScorePanel.setScore(this.highScore);
   }
 

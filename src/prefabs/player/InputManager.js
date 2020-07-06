@@ -10,7 +10,7 @@ class InputManager {
   constructor(player) {
     this.player = player;
     this.scene = player.scene;
-    this.cursors = this.scene.input.keyboard.createCursorKeys();
+    this.cursors = player.scene.input.keyboard.createCursorKeys();
   }
 
   /**
@@ -18,16 +18,15 @@ class InputManager {
    */
   update() {
     const { player } = this;
-    const { intro } = this.scene;
 
     if (player.isDead) {
       return;
     }
 
     if (player.isOnFloor) {
-      if (this.isDuckKeyPressed && intro.isComplete) {
+      if (this.isDuckKeyPressed) {
         player.duck();
-      } else if (this.isJumpKeyPressed && !intro.isWaiting) {
+      } else if (this.isJumpKeyPressed) {
         player.jump();
       } else {
         player.run();
@@ -53,7 +52,6 @@ class InputManager {
    */
   get isJumpKeyPressed() {
     const { activePointer } = this.scene.input;
-
     return (
       this.cursors.up.isDown ||
       this.cursors.space.isDown ||

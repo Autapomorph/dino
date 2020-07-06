@@ -22,7 +22,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene, x = Player.CONFIG.POS.INITIAL_X, y = Player.CONFIG.POS.Y) {
     super(scene, x, y, 'dino', Player.CONFIG.FRAMES.INITIAL);
 
-    this.readyToIntro = false;
+    this.isInitialJump = true;
 
     // Init managers
     this.physicsManager = new PhysicsManager(this);
@@ -34,34 +34,33 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     this.setDepth(1000);
 
     // Register event handlers
+    this.scene.events.on(CONFIG.EVENTS.GAME_INTRO_START, this.onIntroStart, this);
     this.scene.events.on(CONFIG.EVENTS.GAME_RESTART, this.reset, this);
-    this.scene.events.on(CONFIG.EVENTS.GAME_INTRO_START, this.intro, this);
     this.scene.events.on(CONFIG.EVENTS.GAME_OVER, this.die, this);
 
-    this.start();
-    this.scene.add.existing(this);
-  }
-
-  /**
-   * Set 1st player state
-   */
-  start() {
+    // Set initial state
     this.idle();
     this.animationManager.update();
+
+    this.scene.add.existing(this);
   }
 
   /**
    * Update player
    */
   update() {
+    if (this.scene.intro.isWaiting && this.isOnFloor && (this.isRunning || this.isDucking)) {
+      this.scene.intro.start();
+    }
+
     this.inputManager.update();
     this.animationManager.update();
   }
 
   /**
-   * Handle game intro
+   * Handle game intro start
    */
-  intro() {
+  onIntroStart() {
     this.scene.tweens.add({
       targets: this,
       duration: CONFIG.SCENES.GAME.INTRO.DURATION,
@@ -84,13 +83,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    */
   run() {
     this.setState(Player.CONFIG.STATES.RUNNING);
-
-    if (this.readyToIntro && this.scene.intro.isWaiting) {
-      this.scene.intro.start();
-    }
-
-    // when initial jump ends set readyToIntro to false
-    this.readyToIntro = true;
   }
 
   /**
@@ -104,9 +96,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * Set player jumping
    */
   jump() {
+    // Allow intro to start after 1st landing
+    if (!this.isInitialJump && this.scene.intro.isWaiting) {
+      this.run();
+      return;
+    }
+    this.isInitialJump = false;
+
     this.setState(Player.CONFIG.STATES.JUMPING);
     this.physicsManager.jump();
-
     if (!this.scene.intro.isWaiting) {
       this.scene.events.emit(CONFIG.EVENTS.PLAYER_ACTION);
     }
@@ -191,6 +189,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
    * Set player state
    * @param {Player.state} state
    * @returns {Player}
+   * @throws Will throw an error if state argument is invalid
    */
   setState(state) {
     if (Object.hasOwnProperty.call(Player.CONFIG.STATES, state)) {
@@ -198,13 +197,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       return this;
     }
 
-    const possibleValuesString = Object.values(Player.CONFIG.STATES)
-      .map(v => `'${v}'`)
-      .join(', ');
-
-    throw new Error(
-      `Invalid Intro State\nPassed: '${state}'\nPossible values: ${possibleValuesString}`,
-    );
+    throw new Error(`Invalid Player State: ${state}`);
   }
 
   /**

@@ -89,7 +89,7 @@ const GAME = {
   INTRO: {
     STATES: {
       WAITING: 'WAITING',
-      STARTED: 'STARTED',
+      ONGOING: 'ONGOING',
       COMPLETE: 'COMPLETE',
     },
     DURATION: 400,
