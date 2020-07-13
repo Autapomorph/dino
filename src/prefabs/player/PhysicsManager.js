@@ -44,6 +44,34 @@ class PhysicsManager {
   reset() {
     this.player.setVelocityY(0);
   }
+
+  /**
+   * Resize body to match frame dimensions
+   * @param {Phaser.Textures.Frame} frame - Current Player texture frame
+   */
+  resizeBodyToMatchFrame(frame) {
+    const { body } = this.player;
+    const { name, width, height } = frame;
+
+    // Resize body to reduce player collisions
+    if (
+      name === PhysicsManager.CONFIG.FRAMES.JUMPING ||
+      PhysicsManager.CONFIG.FRAMES.IDLING.includes(name) ||
+      PhysicsManager.CONFIG.FRAMES.RUNNING.includes(name)
+    ) {
+      const headZone = 15;
+      const tailZone = 25;
+      const topZone = 4;
+      body.setSize(width - headZone - tailZone, height - topZone);
+      body.setOffset(tailZone, topZone);
+    } else if (PhysicsManager.CONFIG.FRAMES.DUCKING.includes(name)) {
+      const headZone = 35;
+      const tailZone = 25;
+      const topZone = 6;
+      body.setSize(width - headZone - tailZone, height - topZone);
+      body.setOffset(tailZone, topZone);
+    }
+  }
 }
 
 export default PhysicsManager;

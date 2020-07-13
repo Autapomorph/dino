@@ -206,6 +206,14 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       `Invalid Intro State\nPassed: '${state}'\nPossible values: ${possibleValuesString}`,
     );
   }
+
+  /**
+   * Resize body to match frame dimensions
+   * @param {Phaser.Textures.Frame} frame - Current Player texture frame
+   */
+  resizeBodyToMatchFrame(frame) {
+    this.physicsManager.resizeBodyToMatchFrame(frame);
+  }
 }
 
 export default Player;

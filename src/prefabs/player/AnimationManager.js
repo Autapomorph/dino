@@ -19,11 +19,11 @@ class AnimationManager {
     this.initAnimations();
 
     // Register event handlers
-    player.on('animationstart', this.resizeBodyOnAnim, this);
-    player.on('animationupdate', this.resizeBodyOnAnim, this);
-    player.on('animationcomplete', this.resizeBodyOnAnim, this);
-    player.on('animationstart-idle', this.calcIdleAnim, this);
-    player.on('animationrepeat-idle', this.calcIdleAnim, this);
+    player.on('animationstart', this.onAnimationEvents, this);
+    player.on('animationupdate', this.onAnimationEvents, this);
+    player.on('animationcomplete', this.onAnimationEvents, this);
+    player.on('animationstart-idle', this.randomizeidleAnimation, this);
+    player.on('animationrepeat-idle', this.randomizeidleAnimation, this);
   }
 
   /**
@@ -61,79 +61,48 @@ class AnimationManager {
     const { player } = this;
 
     switch (player.state) {
-      case STATES.IDLING: {
+      case STATES.IDLING:
         player.anims.play('idle', true);
         break;
-      }
-      case STATES.RUNNING: {
+      case STATES.RUNNING:
         player.anims.play('run', true);
         break;
-      }
-      case STATES.DUCKING: {
+      case STATES.DUCKING:
         player.anims.play('duck', true);
         break;
-      }
-      case STATES.DEAD: {
+      case STATES.DEAD:
         player.anims.stop();
         player.setFrame(FRAMES.DEAD);
         break;
-      }
       case STATES.JUMPING:
-      default: {
+      default:
         player.anims.stop();
         player.setFrame(FRAMES.JUMPING);
+        player.resizeBodyToMatchFrame(player.frame);
         break;
-      }
     }
   }
 
   /**
-   * Calculate next idle animation blink effect duration
-   * @param {Phaser.Animations.Animation} idleAnim
+   * Handle animation events
+   * @param {Phaser.Animations.Animation} animation - Animation that triggered the event
+   * @param {Phaser.Animations.AnimationFrame} frame - Current Animation Frame
    */
-  calcIdleAnim = idleAnim => {
+  onAnimationEvents(animation, frame) {
+    this.player.resizeBodyToMatchFrame(frame.frame);
+  }
+
+  /**
+   * Randomize next idle animation blink effect duration
+   * @param {Phaser.Animations.Animation} idleAnimation - Idle animation
+   */
+  randomizeidleAnimation = idleAnimation => {
     const { BLINK } = AnimationManager.CONFIG;
-
-    const eyeFrame = idleAnim.getFrameAt(0);
-    const blinkFrame = idleAnim.getFrameAt(1);
-
-    // add random duration to eyeFrame
+    const eyeFrame = idleAnimation.getFrameAt(0);
+    const blinkFrame = idleAnimation.getFrameAt(1);
     eyeFrame.duration = Phaser.Math.RND.between(0, BLINK.DELAY);
-    // set blinkFrame to BLINK_DURATION in ms
-    blinkFrame.duration = -1 * idleAnim.msPerFrame + BLINK.DURATION;
+    blinkFrame.duration = -1 * idleAnimation.msPerFrame + BLINK.DURATION;
   };
-
-  /**
-   * Resize body on animation events
-   * @param {Phaser.Animations.Animation} anim
-   * @param {Phaser.Animations.AnimationFrame} frame
-   */
-  resizeBodyOnAnim(anim, frame) {
-    const { body } = this.player;
-    const { name, width, height } = frame.frame;
-
-    // resize body to reduce player collisions
-    // jumping, idling & running anim frames have equal dimensions
-    if (
-      name === AnimationManager.CONFIG.FRAMES.JUMPING ||
-      AnimationManager.CONFIG.FRAMES.IDLING.includes(name) ||
-      AnimationManager.CONFIG.FRAMES.RUNNING.includes(name)
-    ) {
-      const headZone = 15;
-      const tailZone = 25;
-      const topZone = 4;
-
-      body.setSize(width - headZone - tailZone, height - topZone);
-      body.setOffset(tailZone, topZone);
-    } else if (AnimationManager.CONFIG.FRAMES.DUCKING.includes(name)) {
-      const headZone = 35;
-      const tailZone = 25;
-      const topZone = 6;
-
-      body.setSize(width - headZone - tailZone, height - topZone);
-      body.setOffset(tailZone, topZone);
-    }
-  }
 }
 
 export default AnimationManager;

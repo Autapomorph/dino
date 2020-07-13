@@ -46,19 +46,12 @@ class HorizonItems extends Phaser.Physics.Arcade.Group {
    * Clear horizon items group
    */
   clearItems() {
-    const lastItem = this.getLast(true);
-
-    // clear every invisible item except last
+    // clear every invisible item
     this.children.each(item => {
-      if (item !== lastItem && !item.visible) {
+      if (!item.visible) {
         item.die();
       }
     });
-
-    // clear last item if it is invisible
-    if (lastItem && !lastItem.visible) {
-      lastItem.die();
-    }
   }
 
   /**
