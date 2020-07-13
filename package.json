@@ -1,7 +1,7 @@
 {
   "name": "dino",
   "description": "A Chrome Dino game clone built with Phaser 3",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "homepage": "https://github.com/Autapomorph/dino",
   "author": "Autapomorph (https://github.com/Autapomorph)",
   "repository": {
