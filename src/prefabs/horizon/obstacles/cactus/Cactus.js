@@ -15,7 +15,7 @@ class Cactus extends Obstacle {
 
     // reduce body size by excluding borders
     const borderWidth = 2;
-    this.body.setSize(this.width - borderWidth * 2, this.height - borderWidth);
+    this.setBodySize(this.width - borderWidth * 2, this.height - borderWidth);
     this.body.setOffset(borderWidth, borderWidth);
   }
 }

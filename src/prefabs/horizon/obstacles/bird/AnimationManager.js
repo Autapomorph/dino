@@ -45,7 +45,6 @@ class AnimationManager {
    * @param {Phaser.Animations.AnimationFrame} frame
    */
   resizeBodyOnAnim(anim, frame) {
-    const { body } = this.bird;
     const { name } = frame.frame;
 
     const bodyZoneWidth = 76;
@@ -56,11 +55,11 @@ class AnimationManager {
     // Resize body to match frame dimensions
     if (name === AnimationManager.CONFIG.FRAMES.FLYING[0]) {
       const frameYOffset = 12;
-      body.setSize(bodyZoneWidth, bodyZoneHeight);
-      body.setOffset(bodyZoneXOffset, frameYOffset + bodyZoneYOffset);
+      this.bird.setBodySize(bodyZoneWidth, bodyZoneHeight);
+      this.bird.body.setOffset(bodyZoneXOffset, frameYOffset + bodyZoneYOffset);
     } else if (name === AnimationManager.CONFIG.FRAMES.FLYING[1]) {
-      body.setSize(bodyZoneWidth, bodyZoneHeight);
-      body.setOffset(bodyZoneXOffset, bodyZoneYOffset);
+      this.bird.setBodySize(bodyZoneWidth, bodyZoneHeight);
+      this.bird.body.setOffset(bodyZoneXOffset, bodyZoneYOffset);
     }
   }
 }

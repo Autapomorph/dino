@@ -71,7 +71,6 @@ class PhysicsManager {
    * @param {Phaser.Textures.Frame} frame - Current Player texture frame
    */
   resizeBodyToMatchFrame(frame) {
-    const { body } = this.player;
     const { name, width, height } = frame;
 
     // Resize body to reduce player collisions
@@ -83,14 +82,14 @@ class PhysicsManager {
       const headZone = 15;
       const tailZone = 25;
       const topZone = 4;
-      body.setSize(width - headZone - tailZone, height - topZone);
-      body.setOffset(tailZone, topZone);
+      this.player.setBodySize(width - headZone - tailZone, height - topZone);
+      this.player.body.setOffset(tailZone, topZone);
     } else if (PhysicsManager.CONFIG.FRAMES.DUCKING.includes(name)) {
       const headZone = 35;
       const tailZone = 25;
       const topZone = 6;
-      body.setSize(width - headZone - tailZone, height - topZone);
-      body.setOffset(tailZone, topZone);
+      this.player.setBodySize(width - headZone - tailZone, height - topZone);
+      this.player.body.setOffset(tailZone, topZone);
     }
   }
 }
