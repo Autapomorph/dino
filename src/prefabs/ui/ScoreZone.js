@@ -17,40 +17,37 @@ class ScoreZone {
   }
 
   /**
+   * Adjust score zone position
+   * @param {Phaser.Structs.Size} gameSize - Current game size
+   */
+  adjustPosition({ width }) {
+    const { scoreText: currentScoreText } = this.currentScorePanel;
+    const { scoreText: highScoreText } = this.highScorePanel;
+
+    const currentScoreX = width * CurrentScore.CONFIG.POS.X.OFFSET;
+    const currentScoreY = CurrentScore.CONFIG.POS.Y;
+    currentScoreText.setPosition(currentScoreX, currentScoreY);
+
+    const currentScoreWidth = currentScoreText.width;
+    const highScoreX = currentScoreX - currentScoreWidth - HighScore.CONFIG.POS.X.OFFSET;
+    const highScoreY = HighScore.CONFIG.POS.Y;
+    highScoreText.setPosition(highScoreX, highScoreY);
+  }
+
+  /**
    * Update score zone
    * @param {Phaser.Structs.Size} gameSize - Current game size
    */
   update(gameSize) {
-    this.resize(gameSize);
+    this.adjustPosition(gameSize);
   }
 
   /**
    * Resize score zone
    * @param {Phaser.Structs.Size} gameSize - Current game size
    */
-  resize({ width }) {
-    const {
-      X: { OFFSET: currentScoreXOffset },
-      Y: currentScoreY,
-    } = CurrentScore.CONFIG.POS;
-    const {
-      X: { OFFSET: highScoreXOffset },
-      Y: highScoreY,
-    } = HighScore.CONFIG.POS;
-
-    const { scoreText: currentScoreText } = this.currentScorePanel;
-    const { scoreText: highScoreText, zone: highScoreZone } = this.highScorePanel;
-
-    const currentScoreX = width * currentScoreXOffset;
-    const currentScoreWidth = currentScoreText.width;
-    currentScoreText.setPosition(currentScoreX, currentScoreY);
-
-    const highScoreX = currentScoreX - currentScoreWidth - highScoreXOffset;
-    highScoreText.setPosition(highScoreX, highScoreY);
-
-    const highScoreTextBounds = highScoreText.getTextBounds().global;
-    highScoreZone.setPosition(highScoreTextBounds.x, highScoreTextBounds.y);
-    highScoreZone.setSize(highScoreTextBounds.width, highScoreTextBounds.height);
+  resize(gameSize) {
+    this.adjustPosition(gameSize);
   }
 }
 

@@ -29,7 +29,17 @@ class Game extends Phaser.Game {
    */
   initEventHandlers() {
     this.scale.on('resize', () => {
-      this.resize(this.scale.parentSize);
+      const { parentSize } = this.scale;
+      const { width, height } = parentSize;
+
+      if (width === this.prevParentWidth && height === this.prevParentHeight) {
+        return;
+      }
+
+      this.prevParentWidth = width;
+      this.prevParentHeight = height;
+
+      this.resize(parentSize);
     });
   }
 
@@ -54,29 +64,14 @@ class Game extends Phaser.Game {
    */
   resize(parentSize) {
     const { width: parentWidth, height: parentHeight } = parentSize;
-
-    let width;
-    let height;
-
-    if (parentWidth < parentHeight) {
-      width = Game.CONFIG.WIDTH.PORTRAIT;
-      height = Game.CONFIG.HEIGHT;
-    } else {
-      width = Game.CONFIG.WIDTH.LANDSCAPE;
-      height = Game.CONFIG.HEIGHT;
-    }
+    const gameWidth =
+      parentWidth < parentHeight ? Game.CONFIG.WIDTH.PORTRAIT : Game.CONFIG.WIDTH.LANDSCAPE;
+    const gameHeight = Game.CONFIG.HEIGHT;
 
     this.canvas.style.width = `${parentWidth}px`;
-    this.canvas.style.height = `${height * (parentWidth / width)}px`;
+    this.canvas.style.height = `${gameHeight * (parentWidth / gameWidth)}px`;
 
-    if (parentWidth === this.prevParentWidth && parentHeight === this.prevParentHeight) {
-      return;
-    }
-
-    this.prevParentWidth = parentWidth;
-    this.prevParentHeight = parentHeight;
-
-    this.scale.setGameSize(width, height);
+    this.scale.resize(gameWidth, gameHeight);
   }
 }
 

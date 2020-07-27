@@ -1,5 +1,3 @@
-import Phaser from 'phaser';
-
 import CONFIG from '../../config/game';
 
 /**
@@ -46,22 +44,14 @@ class GameOverPanel {
       .setOrigin(0.5, 0.5)
       .setDepth(9999)
       .setVisible(false);
+
     this.restartImg = this.scene.add
       .image(width / 2, height / 2, 'dino', 'restart')
       .setOrigin(0.5, 0.5)
       .setDepth(9999)
       .setVisible(false);
 
-    const gameOverTextBounds = this.gameOverText.getTextBounds().global;
-    const restartImgBounds = this.restartImg.getBounds();
-    this.zone = this.scene.add
-      .zone(
-        gameOverTextBounds.x,
-        gameOverTextBounds.y,
-        gameOverTextBounds.width,
-        restartImgBounds.y + restartImgBounds.height - gameOverTextBounds.y,
-      )
-      .setOrigin(0, 0);
+    this.zone = this.scene.add.zone().setOrigin(0, 0);
   }
 
   /**
@@ -78,13 +68,18 @@ class GameOverPanel {
    * Show gameover panel
    */
   show() {
+    const { x, y, width, height } = this.gameOverText;
+    const { bottom } = this.restartImg.getBounds();
+
     this.gameOverText.setVisible(true);
     this.restartImg.setVisible(true);
-    this.zone.setInteractive({
-      hitArea: new Phaser.Geom.Rectangle(0, 0, this.zone.width, this.zone.height),
-      hitAreaCallback: Phaser.Geom.Rectangle.Contains,
-      useHandCursor: false,
-    });
+    this.zone.setX(x - width / 2);
+    this.zone.setY(y - height / 2);
+    this.zone.setSize(width, bottom - (y - height / 2));
+    this.zone.setInteractive();
+
+    // uncomment this line to debug interactive area
+    // this.scene.input.enableDebug(this.zone, 0x00ff00);
   }
 
   /**
@@ -100,12 +95,12 @@ class GameOverPanel {
    * Resize gameover panel
    * @param {Phaser.Structs.Size} gameSize - Current game size
    */
-  resize({ width }) {
-    const { x, y } = this.gameOverText.getTextBounds().global;
+  resize(gameSize) {
+    this.gameOverText.setX(gameSize.width / 2);
+    this.restartImg.setX(gameSize.width / 2);
 
-    this.gameOverText.x = width / 2;
-    this.restartImg.x = width / 2;
-    this.zone.setPosition(x, y);
+    const { x, y, width, height } = this.gameOverText;
+    this.zone.setPosition(x - width / 2, y - height / 2);
   }
 }
 

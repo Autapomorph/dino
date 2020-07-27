@@ -73,7 +73,7 @@ class ResizeManager {
   }
 
   /**
-   * Resize game spedd
+   * Resize game speed
    * @param {Phaser.Structs.Size} gameSize - Current game size
    * @param {Phaser.Structs.Size} parentSize - Current parent size
    */

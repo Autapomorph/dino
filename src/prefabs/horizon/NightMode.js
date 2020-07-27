@@ -56,7 +56,7 @@ class NightMode {
 
     this.canvas = this.scene.game.canvas;
     this.parent = this.scene.game.scale.parent;
-    this.canvas.style.transition = `${CONFIG.SCENES.GAME.STYLES.TRANSITION}, filter ${FADE_DURATION}ms linear`;
+    this.canvas.style.transition = `filter ${FADE_DURATION}ms linear`;
     this.parent.style.transition = `background-color ${FADE_DURATION}ms linear`;
   }
 

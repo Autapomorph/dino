@@ -45,9 +45,6 @@ class HighScorePanel extends ScorePanel {
       .setTintFill(0x757575)
       .setOrigin(1, 0)
       .setDepth(9999);
-
-    const { x, y, width, height } = this.scoreText.getTextBounds().global;
-    this.zone = scene.add.zone(x, y, width, height).setOrigin(0, 0);
   }
 
   /**
@@ -56,7 +53,7 @@ class HighScorePanel extends ScorePanel {
    */
   initEventHandlers() {
     super.initEventHandlers();
-    this.zone.on('pointerdown', this.onClick, this);
+    this.scoreText.on('pointerdown', this.onClick, this);
   }
 
   /**
@@ -99,7 +96,7 @@ class HighScorePanel extends ScorePanel {
       this.flashScore();
     } else {
       this.reset();
-      this.zone.disableInteractive();
+      this.scoreText.disableInteractive();
       this.scene.events.emit(CONFIG.EVENTS.HIGH_SCORE_RESET);
     }
   }
@@ -118,7 +115,7 @@ class HighScorePanel extends ScorePanel {
    */
   onRestart() {
     this.reset();
-    this.zone.disableInteractive();
+    this.scoreText.disableInteractive();
     super.onRestart();
   }
 
@@ -135,14 +132,13 @@ class HighScorePanel extends ScorePanel {
 
     this.setScore(Math.max(this.highScore, this.currentScore));
 
-    const { x, y, width, height } = this.scoreText.getTextBounds().global;
-    this.zone.setPosition(x, y);
-    this.zone.setSize(width, height);
-    this.zone.setInteractive({
-      hitArea: new Phaser.Geom.Rectangle(0, 0, this.zone.width, this.zone.height),
-      hitAreaCallback: Phaser.Geom.Rectangle.Contains,
-      useHandCursor: false,
+    const { width, height } = this.scoreText;
+    this.scoreText.setInteractive({
+      hitArea: new Phaser.Geom.Rectangle(0, 0, width, height),
     });
+
+    // uncomment this line to debug interactive area
+    // this.scene.input.enableDebug(this.scoreText, 0x00ff00);
   }
 }
 

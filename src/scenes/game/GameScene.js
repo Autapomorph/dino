@@ -25,7 +25,6 @@ class GameScene extends Phaser.Scene {
   init() {
     this.initVars();
     this.initEventHandlers();
-    this.initCanvasStyles();
   }
 
   /**
@@ -67,17 +66,6 @@ class GameScene extends Phaser.Scene {
 
     this.input.once('pointerup', this.resumeAudioContext, this);
     this.input.keyboard.once('keyup', this.resumeAudioContext, this);
-  }
-
-  /**
-   * Init canvas styles
-   */
-  initCanvasStyles() {
-    const styles = Object.entries(GameScene.CONFIG.STYLES).map(([k, v]) => [k.toLowerCase(), v]);
-
-    styles.forEach(([k, v]) => {
-      this.game.canvas.style[k] = v;
-    });
   }
 
   /**
@@ -184,7 +172,16 @@ class GameScene extends Phaser.Scene {
    * Handle game intro complete
    */
   onIntroComplete() {
-    this.resizeManager.resizeCanvas(this.scale.gameSize, this.scale.parentSize);
+    const { canvas, gameSize, parentSize } = this.scale;
+    const originalTransition = canvas.style.transition;
+    const newTransition = `${CONFIG.SCENES.GAME.STYLES.TRANSITION}, ${originalTransition}`;
+
+    canvas.style.transition = newTransition;
+    this.resizeManager.resizeCanvas(gameSize, parentSize);
+    canvas.addEventListener('transitionend', () => {
+      canvas.style.transition = originalTransition;
+      this.resizeManager.resizeCanvas(gameSize, parentSize);
+    });
   }
 
   /**
@@ -206,10 +203,11 @@ class GameScene extends Phaser.Scene {
    * Handle gameover
    */
   onGameOver() {
+    const { width: gameWidth, height: gameHeight } = this.scale.gameSize;
+
     this.isPlaying = false;
-
     this.physics.pause();
-
+    this.scale.resize(gameWidth, gameHeight);
     if (this.game.device.features.vibration) {
       navigator.vibrate(GameScene.CONFIG.GAMEOVER.VIBRATION);
     }
@@ -254,7 +252,6 @@ class GameScene extends Phaser.Scene {
   /**
    * Handle canvas resize
    * @param {Phaser.Structs.Size} gameSize - Current game size
-   * @readonly
    */
   onResizeCanvas(gameSize) {
     const { width, height } = gameSize;
@@ -275,7 +272,6 @@ class GameScene extends Phaser.Scene {
   /**
    * Handle game speed resize
    * @param {Phaser.Structs.Size} gameSize - Current game size
-   * @readonly
    */
   onResizeGameSpeed(gameSize) {
     const { MAX, MOBILE_COEFFICIENT } = GameScene.CONFIG.GAME.OBSTACLES.SPEED;
@@ -292,7 +288,6 @@ class GameScene extends Phaser.Scene {
   /**
    * Handle camera resize
    * @param {Phaser.Structs.Size} gameSize - Current game size
-   * @readonly
    */
   onResizeCamera(gameSize) {
     const { width, height } = gameSize;
@@ -310,7 +305,6 @@ class GameScene extends Phaser.Scene {
   /**
    * Handle gameobjects resize
    * @param {Phaser.Structs.Size} gameSize - Current game size
-   * @readonly
    */
   onResizeGameObjects(gameSize) {
     this.ui.resize(gameSize);

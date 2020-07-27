@@ -152,14 +152,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
   reset() {
     this.setState(Player.CONFIG.STATES.IDLING);
     this.animationManager.update();
-
-    // little hack to set y to default because
-    // this.setY(Player.CONFIG.POS.Y) causes player to fall through the ground
-    this.scene.tweens.add({
-      targets: this,
-      duration: 0,
-      y: Player.CONFIG.POS.Y,
-    });
+    this.setY(Player.CONFIG.POS.Y);
   }
 
   /**

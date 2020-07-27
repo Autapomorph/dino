@@ -32,8 +32,7 @@ class Stars extends Phaser.GameObjects.Group {
       star.update(speed);
 
       if (star.x + star.width < 0) {
-        star.setX(width);
-        star.setY(this.getRandomYPos());
+        star.setPosition(width, this.getRandomYPos());
         star.setFrame(this.getRandomFrame());
       }
     });
