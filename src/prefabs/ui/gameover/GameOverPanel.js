@@ -1,7 +1,7 @@
-import CONFIG from '../../config/game';
+import CONFIG from '../../../config/game';
 
 /**
- * GameOverPanel
+ * Game over panel
  * @class GameOverPanel
  */
 class GameOverPanel {

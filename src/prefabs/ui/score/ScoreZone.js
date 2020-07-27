@@ -2,7 +2,7 @@ import CurrentScore from './CurrentScorePanel';
 import HighScore from './HighScorePanel';
 
 /**
- * ScoreZone
+ * Score panels zone
  * @class ScoreZone
  */
 class ScoreZone {

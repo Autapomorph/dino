@@ -19,7 +19,7 @@ const GAME = {
       },
     },
     HIGH_SCORE: {
-      STORAGE_KEY: 'dino-highScore',
+      STORAGE_KEY: 'highScore',
       POS: {
         X: {
           OFFSET: 15,

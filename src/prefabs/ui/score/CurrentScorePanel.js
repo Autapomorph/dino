@@ -1,12 +1,12 @@
-import CONFIG from '../../config/game';
-import ScorePanel from './ScorePanel';
+import CONFIG from '../../../config/game';
+import BaseScorePanel from './BaseScorePanel';
 
 /**
- * CurrentScorePanel
+ * Current score panel
  * @class CurrentScorePanel
- * @extends {ScorePanel}
+ * @extends {BaseScorePanel}
  */
-class CurrentScorePanel extends ScorePanel {
+class CurrentScorePanel extends BaseScorePanel {
   static CONFIG = CONFIG.SCENES.GAME.GAME.SCORE;
 
   /**
@@ -16,10 +16,7 @@ class CurrentScorePanel extends ScorePanel {
   initText() {
     const { scene } = this;
 
-    this.scoreText = scene.add
-      .bitmapText(0, 0, 'joystix', '', 32)
-      .setOrigin(1, 0)
-      .setDepth(9999);
+    this.scoreText = scene.add.bitmapText(0, 0, 'joystix', '', 32).setOrigin(1, 0).setDepth(9999);
   }
 
   /**
@@ -29,40 +26,41 @@ class CurrentScorePanel extends ScorePanel {
    */
   createFlashTween() {
     const { DURATION, ITERATIONS } = CurrentScorePanel.CONFIG.ACHIEVEMENT.FLASH;
-
     return super.createFlashTween(DURATION, ITERATIONS);
   }
 
   /**
    * Update high score panel
    * @param {boolean} isPlaying - Whether game is running
-   * @param {number} score - Current game score
+   * @param {number} currentScore - Current game score
    * @override
    */
-  update(isPlaying, score) {
-    const { ACHIEVEMENT } = CurrentScorePanel.CONFIG;
+  update(isPlaying, currentScore) {
+    super.update(currentScore);
 
-    super.update(score);
-
-    this.score = score;
-
-    if (isPlaying && score > 0 && score % ACHIEVEMENT.DISTANCE === 0 && !this.isFlashing) {
+    if (
+      isPlaying &&
+      currentScore > 0 &&
+      currentScore % CurrentScorePanel.CONFIG.DISTANCE === 0 &&
+      !this.isFlashing
+    ) {
       this.scene.events.emit(CONFIG.EVENTS.ACHIEVEMENT);
       this.flashScore();
     }
 
     if (isPlaying && !this.isFlashing) {
-      this.setScore(score);
+      this.setScore(currentScore);
     }
   }
 
   /**
    * Handle gameover
    * @override
+   * @param {number} currentScore - Current game score
    */
-  onGameOver() {
+  onGameOver(currentScore) {
     super.onGameOver();
-    this.setScore(this.score);
+    this.setScore(currentScore);
   }
 }
 

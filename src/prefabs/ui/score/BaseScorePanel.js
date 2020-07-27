@@ -1,14 +1,14 @@
-import CONFIG from '../../config/game';
+import CONFIG from '../../../config/game';
 
 /**
- * ScorePanel
- * @class ScorePanel
+ * Base score panel
+ * @class BaseScorePanel
  */
-class ScorePanel {
+class BaseScorePanel {
   static CONFIG = CONFIG.SCENES.GAME.GAME.SCORE;
 
   /**
-   * Creates an instance of ScorePanel
+   * Creates an instance of BaseScorePanel
    * @param {Phaser.Scene} scene - The Scene to which this Player belongs
    */
   constructor(scene) {
@@ -34,7 +34,7 @@ class ScorePanel {
     this.flashTween = this.createFlashTween();
 
     // set maxScore to 10^MAX_LENGTH - 1 e.g. MAX_LENGTH = 5 so maxScore = 10^5 - 1 = 99_999
-    this.maxScoreLength = ScorePanel.CONFIG.MAX_LENGTH;
+    this.maxScoreLength = BaseScorePanel.CONFIG.MAX_LENGTH;
     this.maxScore = 10 ** (this.maxScoreLength - 1) - 1;
 
     this.defaultString = '';
@@ -45,7 +45,7 @@ class ScorePanel {
    * @abstract
    * @throws Will throw an error if not implemented
    */
-  // eslint-disable-next-line class-methods-use-this, no-unused-vars
+  // eslint-disable-next-line class-methods-use-this
   initText() {
     // create scoreText: BitmapText var here
     throw new Error('Method must be implemented by subclass');
@@ -158,4 +158,4 @@ class ScorePanel {
   }
 }
 
-export default ScorePanel;
+export default BaseScorePanel;

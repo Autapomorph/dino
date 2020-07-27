@@ -11,7 +11,6 @@ class ResizeManager {
    * Creates an instance of ResizeManager
    * @param {Phaser.Scene} scene - The Scene to which this ResizeManager belongs
    * @param {*} resizeCallbacks - Callback to be called
-   * @memberof ResizeManager
    */
   constructor(scene, { canvas, camera, gameSpeed, gameObjects }) {
     this.game = scene.game;

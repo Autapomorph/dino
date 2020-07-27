@@ -1,27 +1,34 @@
 import Phaser from 'phaser';
 
-import CONFIG from '../../config/game';
-import ScorePanel from './ScorePanel';
+import CONFIG from '../../../config/game';
+import BaseScorePanel from './BaseScorePanel';
 
 /**
- * HighScorePanel
+ * High score panel
  * @class HighScorePanel
- * @extends {ScorePanel}
+ * @extends {BaseScorePanel}
  */
-class HighScorePanel extends ScorePanel {
+class HighScorePanel extends BaseScorePanel {
   static CONFIG = CONFIG.SCENES.GAME.GAME.HIGH_SCORE;
 
   /**
    * Creates an instance of HighScorePanel
    * @param {Phaser.Scene} scene - The Scene to which this InputManager belongs
-   * @param {number} [highScore=0] - High score
+   * @param {boolean} [disableReset=false] - Is resetting disabled
    * @override
    */
-  constructor(scene, highScore = 0) {
+  constructor(scene, disableReset = false) {
     super(scene);
 
     this.scene = scene;
-    this.highScore = highScore;
+    this.defaultString = 'HI ';
+
+    // Register event handlers
+    this.scene.events.on(CONFIG.EVENTS.HIGH_SCORE_FETCH.SUCCESS, this.onFetchScore, this);
+    this.scene.events.on(CONFIG.EVENTS.HIGH_SCORE_SAVE.SUCCESS, this.onSaveScore, this);
+    if (!disableReset) {
+      this.scoreText.on('pointerdown', this.onClick, this);
+    }
   }
 
   /**
@@ -48,15 +55,6 @@ class HighScorePanel extends ScorePanel {
   }
 
   /**
-   * Init event handlers
-   * @override
-   */
-  initEventHandlers() {
-    super.initEventHandlers();
-    this.scoreText.on('pointerdown', this.onClick, this);
-  }
-
-  /**
    * Create score text flash tween
    * @returns {Phaser.Tweens.Tween} Created Tween object
    * @override
@@ -70,22 +68,19 @@ class HighScorePanel extends ScorePanel {
   }
 
   /**
-   * Update high score panel
-   * @param {number} score - Current game score
-   * @override
+   * Handle high score success fetch
+   * @param {number} highScore - Fetched high score
    */
-  update(score) {
-    this.currentScore = score;
+  onFetchScore(highScore) {
+    this.setScore(highScore);
   }
 
   /**
-   * Set score
-   * @param {number} score - Current game score
-   * @override
+   * Handle high score success save
+   * @param {number} highScore - Saved high score
    */
-  setScore(score) {
-    super.setScore(score);
-    this.highScore = score;
+  onSaveScore(highScore) {
+    this.setScore(highScore);
   }
 
   /**
@@ -97,16 +92,8 @@ class HighScorePanel extends ScorePanel {
     } else {
       this.reset();
       this.scoreText.disableInteractive();
-      this.scene.events.emit(CONFIG.EVENTS.HIGH_SCORE_RESET);
+      this.scene.events.emit(CONFIG.EVENTS.HIGH_SCORE_UPDATE, 0);
     }
-  }
-
-  /**
-   * Handle game start
-   * @override
-   */
-  onStart() {
-    this.setScore(this.highScore);
   }
 
   /**
@@ -125,13 +112,6 @@ class HighScorePanel extends ScorePanel {
    */
   onGameOver() {
     super.onGameOver();
-
-    if (this.currentScore > this.highScore) {
-      this.scene.events.emit(CONFIG.EVENTS.HIGH_SCORE_RECORD, this.currentScore);
-    }
-
-    this.setScore(Math.max(this.highScore, this.currentScore));
-
     const { width, height } = this.scoreText;
     this.scoreText.setInteractive({
       hitArea: new Phaser.Geom.Rectangle(0, 0, width, height),
