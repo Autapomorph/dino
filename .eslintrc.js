@@ -4,10 +4,8 @@ module.exports = {
     node: true,
   },
   parser: 'babel-eslint',
-  extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier'],
+  extends: ['airbnb-base', 'plugin:prettier/recommended'],
   rules: {
-    'prettier/prettier': 'error',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };
