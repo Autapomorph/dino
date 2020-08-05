@@ -47,6 +47,7 @@ module.exports = {
     new EnvironmentPlugin({
       CANVAS_RENDERER: true,
       WEBGL_RENDERER: true,
+      API_ENDPOINT: process.env.API_ENDPOINT || null,
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
