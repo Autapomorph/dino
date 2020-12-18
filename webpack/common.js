@@ -1,16 +1,15 @@
 const path = require('path');
 const { EnvironmentPlugin } = require('webpack');
-const DotenvWebpackPlugin = require('dotenv-webpack');
-const WebpackBar = require('webpackbar');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const DotenvPlugin = require('dotenv-webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
+const FaviconsPlugin = require('favicons-webpack-plugin');
+const WebpackBarPlugin = require('webpackbar');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
   output: {
-    filename: '[name].js',
-    chunkFilename: '[name].js',
+    path: path.resolve(__dirname, '..', 'dist'),
   },
   resolve: {
     alias: {
@@ -41,18 +40,18 @@ module.exports = {
     ],
   },
   plugins: [
-    new WebpackBar(),
-    new FriendlyErrorsWebpackPlugin(),
-    new DotenvWebpackPlugin(),
+    new DotenvPlugin(),
     new EnvironmentPlugin({
       CANVAS_RENDERER: true,
       WEBGL_RENDERER: true,
       API_ENDPOINT: process.env.API_ENDPOINT || null,
     }),
-    new HtmlWebpackPlugin({
+    new ESLintPlugin(),
+    new HtmlPlugin({
       template: './src/index.html',
+      scriptLoading: 'blocking',
     }),
-    new FaviconsWebpackPlugin({
+    new FaviconsPlugin({
       logo: './assets/icons/dino-start-icon.png',
       prefix: 'favicons',
       favicons: {
@@ -69,5 +68,7 @@ module.exports = {
         },
       },
     }),
+    new WebpackBarPlugin(),
+    new FriendlyErrorsPlugin(),
   ],
 };

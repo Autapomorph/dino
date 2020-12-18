@@ -9,6 +9,9 @@ module.exports = merge(commonConfig, {
   devtool: 'eval-source-map',
   devServer: {
     open: true,
-    quiet: true,
+  },
+  infrastructureLogging: {
+    level: 'none',
+    debug: [/webpack-dev-server/],
   },
 });
