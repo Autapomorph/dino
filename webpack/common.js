@@ -31,11 +31,11 @@ module.exports = {
       },
       {
         test: [/\.vert$/, /\.frag$/],
-        use: 'raw-loader',
+        type: 'asset/source',
       },
       {
         test: /\.(gif|png|jpe?g|svg|xml)$/i,
-        use: 'file-loader',
+        type: 'asset/resource',
       },
     ],
   },
@@ -49,11 +49,10 @@ module.exports = {
     new ESLintPlugin(),
     new HtmlPlugin({
       template: './src/index.html',
-      scriptLoading: 'blocking',
     }),
     new FaviconsPlugin({
       logo: './assets/icons/dino-start-icon.png',
-      prefix: 'favicons',
+      prefix: 'favicons/',
       favicons: {
         appName: 'Dino',
         start_url: '/',

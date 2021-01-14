@@ -8,6 +8,7 @@ module.exports = merge(commonConfig, {
   mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
+    host: 'localhost',
     open: true,
   },
   infrastructureLogging: {
